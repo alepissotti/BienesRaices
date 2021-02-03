@@ -7,6 +7,7 @@ import inicioCSS from '../css/inicio.module.css';
 //Components
 import Layout from '../components/layout';
 import Encuentra from '../components/encuentra';
+import ListadoPropiedades from '../components/listadoPropiedades';
 
 //Hooks
 import useInicio from '../hooks/useInicio';
@@ -56,6 +57,8 @@ const Index = () => {
             </main>
 
             <Encuentra/>
+            
+            <ListadoPropiedades/>
         </Layout>
     );
 }
