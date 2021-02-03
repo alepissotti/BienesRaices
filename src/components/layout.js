@@ -2,6 +2,9 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import {Global, css} from '@emotion/react';
 
+//Components
+import Header from '../components/header';
+
 const Layout = ({children}) => {
     return ( 
         <>
@@ -53,6 +56,9 @@ const Layout = ({children}) => {
                 <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet" />
                 <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Roboto:400,700" rel="stylesheet" />
             </Helmet>
+            
+            <Header/>
+            
             {children}
         </>
      );
