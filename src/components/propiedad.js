@@ -73,7 +73,7 @@ const Propiedad = ({ data } ) => {
     
     const propiedad = data.PROPIEDAD.nodes[0];
     const {Nombre, Habitaciones, Estacionamiento, Banios, Precio, 
-          Descripcion, categoria, agentes, Imagen} = propiedad;
+          Descripcion, agentes, Imagen} = propiedad;
 
     return ( 
         <Layout>

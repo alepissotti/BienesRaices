@@ -4,6 +4,7 @@ import ListadoPropiedadesCSS from '../css/listadoPropiedades.module.css'
 
 //Hooks
 import usePropiedades from '../hooks/usePropiedades';
+import useFiltro from '../hooks/useFiltro';
 
 //Components
 import PropiedadPreview from './propiedadPreview';
@@ -13,12 +14,23 @@ const ListadoPropiedades = () => {
     const propiedadesResponse = usePropiedades();
     
     //state de las propiedades
-    const [propiedades, guardarPropiedades] = useState([]);
+    const [propiedades] = useState(propiedadesResponse);
+
+    //state del filtro
+    const [filtradas, guardarFiltradas] = useState([]);
+
+    //UI del filtro de búsqueda
+    const {categoria, filtroUI } = useFiltro();
 
     //useEffect cuando inicia la aplicación
     useEffect(() => {
-        guardarPropiedades(propiedadesResponse);
-    },[])
+        if (categoria) {
+            const propiedadesFiltradas = propiedades.filter(propiedad => propiedad.categoria.Nombre === categoria);
+            guardarFiltradas(propiedadesFiltradas);
+        } else {
+            guardarFiltradas(propiedades);
+        }
+    },[categoria])
     
     return ( 
         <>
@@ -27,10 +39,13 @@ const ListadoPropiedades = () => {
                 margin-top: 5rem;
             `}
             >Nuestras Propiedades</h2>
+
+            {filtroUI()}
+
             <ul
                 className={ListadoPropiedadesCSS.propiedades}
             >
-                {propiedades.map(propiedad => (
+                {filtradas.map(propiedad => (
                     <PropiedadPreview
                         key={propiedad.id}
                         propiedad={propiedad}
