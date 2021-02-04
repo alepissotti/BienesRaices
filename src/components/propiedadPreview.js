@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import GatsbyImage from 'gatsby-image';
+import {Link} from 'gatsby';
+import convert from 'url-slug';
 
 //Components
 import Iconos from './iconos';
@@ -30,6 +32,19 @@ const Contenido = styled.div`
     }
 `;
 
+const Boton = styled(Link)`
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: #75AB00;
+    width: 100%;
+    color: #FFF;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: block;
+`;
+
 const PropiedadPreview = ({propiedad}) => {
     
     const {nombre, precio, habitaciones, banios, estacionamiento, imagen} = propiedad;
@@ -48,6 +63,11 @@ const PropiedadPreview = ({propiedad}) => {
                     estacionamiento={estacionamiento}
                 />
             </Contenido>
+            <Boton
+                to={convert(nombre)}
+            >
+            Ver propiedad
+            </Boton>
         </Card>
      );
 }
